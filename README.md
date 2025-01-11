@@ -1,4 +1,4 @@
-# Your startup name here
+# Maze Race
 
 [My Notes](notes.md)
 
@@ -38,9 +38,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor Player 1
+    actor Player 2
+    actor Server
+    Player 1->>Server: Replace this with your design
+    Player 2->>Server; 
 ```
 
 ### Key features
