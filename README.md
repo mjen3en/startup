@@ -26,11 +26,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I want to make a game where two players race to solve a randomly generated maze in real time. Every new game creates a new procedurally generated maze. Two players can then connect to the game and have their position displayed in real time. The first player to reach the end wins.
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image]().
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -43,20 +43,22 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Maze generation, procedurally generates maze to explore
+- Player Movement
+- Start and End Points
+- Win Condition
+- Muliplyaer: Websocket allows for multiplayer in real time.
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Three HTML pages, one for login/sign up, one for create/joing game, and the game itself
+- **CSS** - Use CSS to style application, different colors for players, create high contrast maze that is easy to see and navigate.
+- **React** - USe React to create components reactive to user actions (elements of the maze)
+- **Service** - Backend for storing and retrieving games, allowing players to join other games with room code
+- **DB/Login** - Store user info in database
+- **WebSocket** - As player moves, their position is displayed in real time to other player
 
 ## 🚀 AWS deliverable
 
