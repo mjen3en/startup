@@ -42,7 +42,7 @@ sequenceDiagram
     actor Player2
     actor Server
     Player1->>Server 
-    Player2->>Server;
+    Player2->>Server
 ```
 
 ### Key features
