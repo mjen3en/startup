@@ -38,13 +38,13 @@ The first screen contains two options, Login and Sign Up, allowing new players t
 
 ```mermaid
 sequenceDiagram
-    actor Player 1
-    actor Player 2
+    actor Player1
+    actor Player2
     actor Server
     Player 1->>Server: 
     Player 2->>Server;
-    Server ->>Player 1
-    Server ->>Player 2
+    Server ->>Player1
+    Server ->>Player2
 ```
 
 ### Key features
