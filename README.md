@@ -40,7 +40,6 @@ The first screen contains two options, Login and Sign Up, allowing new players t
 sequenceDiagram
     actor Player1
     actor Player2
-    actor Server
     Player1->>Server 
     Player2->>Server
 ```
