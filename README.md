@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This game creates a procedurly generated maze for two players to explore. The players race to get to the goal, while having their locations updated in real time through Websocket. 
 
 
 > [!NOTE]
@@ -18,11 +18,11 @@ A brief description of the application here. Lorem ipsum dolor sit amet, consect
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -34,15 +34,17 @@ I want to make a game where two players race to solve a randomly generated maze 
 ![Design image](CreateGameScreen.png).
 ![Design image](GameScreen.png).
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The first screen contains two options, Login and Sign Up, allowing new players to create an account and exitsing players to login in. The second screen has two options, to either create a new game or joing a pre-existing one. The third screen is the game itself, containing a procedurallly generated maze and allowing the player to control their character by way of arrow keys.
 
 ```mermaid
 sequenceDiagram
     actor Player 1
     actor Player 2
     actor Server
-    Player 1->>Server: Replace this with your design
-    Player 2->>Server; 
+    Player 1->>Server: 
+    Player 2->>Server;
+    Server ->>Player 1
+    Server ->>Player 2
 ```
 
 ### Key features
@@ -51,7 +53,7 @@ sequenceDiagram
 - Player Movement
 - Start and End Points
 - Win Condition
-- Muliplyaer: Websocket allows for multiplayer in real time.
+- Muliplayer: Websocket allows for multiplayer in real time.
 
 ### Technologies
 
