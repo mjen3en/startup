@@ -40,8 +40,10 @@ The first screen contains two options, Login and Sign Up, allowing new players t
 sequenceDiagram
     actor Player1
     actor Player2
-    Player1->>Server: Movement info
-    Player2->>Server: Movement info
+    Player1->>Server: P1 movement
+    Player2->>Server: P2 movement
+    Server -->>Player1: P2 movement
+    Server -->>Player2: P1 movement
 ```
 
 ### Key features
