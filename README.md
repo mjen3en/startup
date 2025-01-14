@@ -64,6 +64,7 @@ I am going to use the required technologies in the following ways.
 - **Service** - Backend for storing and retrieving games, allowing players to join other games with room code
 - **DB/Login** - Store user info in database
 - **WebSocket** - As player moves, their position is displayed in real time to other player
+- **Apis** - Use external api to generate random mazes https://github.com/odinn1984/mgapi
 
 ## 🚀 AWS deliverable
 
