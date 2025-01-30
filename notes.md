@@ -17,3 +17,6 @@ Difference between
 Use img for images
 Look at documentation if needed!
 Need to use Database for something, Keep track of recent wins and loses. (ex User1 beat User2). Display this info on joingame screen
+
+use command to deploy to site
+./deployFiles.sh -k ~/keys/production.pem -h mjweb260.click -s startup
