@@ -62,9 +62,9 @@ I am going to use the required technologies in the following ways.
 - **CSS** - Use CSS to style application, different colors for players, create high contrast maze that is easy to see and navigate.
 - **React** - USe React to create components reactive to user actions (elements of the maze)
 - **Service** - Backend for storing and retrieving games, allowing players to join other games with room code
-- **DB/Login** - Store user info in database
+- **DB/Login** - Store user info in database, retrieves the outcomes of previous matches and displays them
 - **WebSocket** - As player moves, their position is displayed in real time to other player
-- **Apis** - Use external api to generate random mazes https://github.com/odinn1984/mgapi
+- **Apis** - Use external api to generate random mazes https://github.com/odinn1984/mgapi, use 100ms api to generate and manage room codes
 
 ## 🚀 AWS deliverable
 
@@ -77,13 +77,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **HTML pages** - Created html pages for login, create/join game, gameplay, and game over screen
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
+- [x] **Proper HTML element usage** - Used proper HTML elements to create framework of webpage
 - [x] **Links** - Put links conecting html pages together
-- [ ] **Text** - I did not complete this part of the deliverable.
+- [x] **Text** - added text denoting what page the user is on
 - [x] **3rd party API placeholder** - put placeholder for the API used to create and manage roomcodes and the API to create random mazes
 - [x] **Images** - I added images representing the maze and for the "prize" on the win screen
 - [x] **Login placeholder** - Put input boxes for where the user will enter email and password
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - Put placeholder for where database will display the outcomes of 3 most recent matches
 - [x] **WebSocket placeholder** - Put place holder for where websocket will notify player1 of 2nd player entering room
 
 ## 🚀 CSS deliverable
