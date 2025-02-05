@@ -7,10 +7,11 @@
     <title>Maze Race</title>
    <!--- <link rel="icon" href="favicon.ico" />-->
   </head>
+  <link rel="stylesheet" href="main.css" />
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
-      <h1>Maze Race<sup>&reg;</sup></h1>
+      <h1>Maze Race</h1>
 
       <!-- Navigation elements -->
       <nav>
@@ -23,12 +24,16 @@
     </header>
 
     <main>
-      <h1>Create Game</h1>
-      <li><a href="creategame.html">Click Here</a></li>
+      <form method = "get" action = "creategame.html">
+        <div>
+      <button type="submit"> Create Game</button>
+    </div>
+      </form>
+      
       <h1>Join Game</h1>
       <form method="get" action="gamecscreen.html">
         <div>
-          <span>@</span>
+          <span></span>
           <input type="text" placeholder="Game Code" />
         </div>
         <button type="submit">Join</button>

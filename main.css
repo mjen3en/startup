@@ -12,15 +12,28 @@ body {
     flex-direction: column;
     min-width: 375px;
     background-color: rgb(255,255,240);
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
   }
 
   image {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 25%;
+    size: 1cm;
     background-color: rgb(255,255,240);
     
+  }
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
   
   header {
@@ -37,6 +50,16 @@ body {
   
   footer {
     flex: 0 30px;
+  }
+
+  button {
+    background-color: rgb(31, 73, 101);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
   }
   
   menu {
