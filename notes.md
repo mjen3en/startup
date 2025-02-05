@@ -21,5 +21,16 @@ Need to use Database for something, Keep track of recent wins and loses. (ex Use
 use command to deploy to site
 ./deployFiles.sh -k ~/keys/production.pem -h mjweb260.click -s startup
 
+## CSS Notes
+
 color pallete
 Mediterreanian Blue 31, 73, 101
+ivory 255, 255, 240
+
+font 'Courier New', monospace;
+
+For buttons use padding
+
+
+
+
