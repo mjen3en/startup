@@ -90,12 +90,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - Added header and body color. Added links to footer.
+- [x] **Navigation elements** - Added buttons to move between pages. Made button function obvious with label.
+- [x] **Responsive to window resizing** - Added CSS to make page responsive to window resizing.
+- [x] **Application elements** - Configured sign in boxes to be larger and easier to see.
+- [x] **Application text content** - Changed text font to be more interesting. Centered text.
+- [x] **Application images** - Added and configured images that will be a part of application
 
 ## 🚀 React part 1: Routing deliverable
 
