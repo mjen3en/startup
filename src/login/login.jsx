@@ -17,7 +17,7 @@ export function Login() {
         <div>
           <input type="password" placeholder="password" />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Login</button> 
         <button type="submit">Sign Up</button>
       </form>
     </main>
