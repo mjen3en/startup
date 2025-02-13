@@ -6,7 +6,7 @@ export function GameOver() {
     <main>
       <h1>GAME OVER</h1>
       <h1>YOU WON</h1>
-      <form method="get" action="index.html">
+      <form method="get" action="/">
         <div>
           <button type="submit" >Go Home</button>
         </div>

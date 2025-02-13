@@ -15,7 +15,7 @@ export default function App() {
         <header className="container-fluid">
           <nav className="navbar fixed-top navbar-dark">
             <div className="navbar-brand">
-              Maze Race<sup>&reg;</sup>
+              Maze Race
             </div>
             <menu className="navbar-nav">
               <li className="nav-item">
@@ -46,6 +46,8 @@ export default function App() {
             </menu>
           </nav>
         </header>
+
+        
   
 <Routes>
   <Route path='/' element={<Login />} exact />
@@ -58,8 +60,8 @@ export default function App() {
   
         <footer className="bg-dark text-white-50">
           <div className="container-fluid">
-            <span className="text-reset">Author Name(s)</span>
-            <NavLink className="text-reset" to="https://github.com/webprogramming260/simon-react">
+            <span className="text-reset">Micah Jensen</span>
+            <NavLink className="text-reset" to="https://github.com/mjen3en/startup">
               Source
             </NavLink >
           </div>

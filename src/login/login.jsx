@@ -6,7 +6,7 @@ export function Login() {
   return (
     <main>
       <h1>Ready to Race??</h1>
-      <img src="laurels.png" alt="Maze>" />
+      <img src="laurels.png" alt="Maze" />
       <form method="get" action="joingame">
         <div>
           <input type="text" placeholder="your@email.com" />

@@ -7,6 +7,17 @@ header {
     
   }
 
+main {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    background-color: rgb(255,255,240);
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+
+  }
+
 .body {
     display: flex;
     flex-direction: column;
