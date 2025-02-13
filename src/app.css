@@ -4,6 +4,8 @@ header {
     text-align: center;
     font-family: 'Courier New', monospace;
     background-color: rgb(31, 73, 101);
+    position: sticky;
+    top: 0;
     
   }
 
@@ -93,4 +95,10 @@ header {
     main {
       flex: 1 100vh;
     }
+  }
+
+  .sticky_header {
+    position: sticky;
+    top: 0;
+
   }

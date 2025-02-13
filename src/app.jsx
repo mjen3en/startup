@@ -11,7 +11,7 @@ import { JoinGame } from './joingame/joingame';
 export default function App() {
     return (
         <BrowserRouter>
-      <div className="body bg-dark text-light">
+      <div className="body">
         <header className="container-fluid">
           <nav className="navbar fixed-top navbar-dark">
             <div className="navbar-brand">
