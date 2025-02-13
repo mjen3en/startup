@@ -1,4 +1,5 @@
 import React from 'react';
+import './gameover.css';
 
 export function GameOver() {
   return (

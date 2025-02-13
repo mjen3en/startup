@@ -1,4 +1,6 @@
 import React from 'react';
+import './joingame.css';
+
 
 export function JoinGame() {
   return (
