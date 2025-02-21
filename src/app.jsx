@@ -7,8 +7,13 @@ import { Play } from './play/play';
 import { GameOver } from './gameover/gameover';
 import { CreateGame } from './creategame/creategame';
 import { JoinGame } from './joingame/joingame';
+import { AuthState } from './login/authState';
 
-export default function App() {
+ function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
     return (
         <BrowserRouter>
       <div className="body">
@@ -28,21 +33,26 @@ export default function App() {
                   Play
                 </NavLink >
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="creategame">
-                  Create Game
-                </NavLink >
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="joingame">
-                  Join Game
-                </NavLink >
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="gameover">
-                  Game Over
-                </NavLink >
-              </li>
+              {authState === AuthState.Authenticated && (
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="creategame">
+                    Create Game
+                  </NavLink >
+                </li>
+              )}
+              {authState === AuthState.Authenticated && (
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="joingame">
+                    Join Game
+                  </NavLink >
+                </li>
+              )}
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="gameover">
+                    Game Over
+                  </NavLink >
+                </li>
+              
             </menu>
           </nav>
         </header>
@@ -50,7 +60,18 @@ export default function App() {
         
   
 <Routes>
-  <Route path='/' element={<Login />} exact />
+  <Route path='/' element={
+            <Login 
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+                />
+              } 
+                exact 
+                />
   <Route path='/play' element={<Play />} />
   <Route path='/creategame' element={<CreateGame />} />
   <Route path='/joingame' element={<JoinGame />} />
@@ -74,3 +95,5 @@ export default function App() {
         return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
       }
   }
+
+  export default App;
