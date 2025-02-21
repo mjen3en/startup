@@ -8,13 +8,12 @@ import { AuthState } from './authState';
 export function Login({userName, authState, onAuthChange}) {
   return (
     <main>
-      <h1>Ready to Race??</h1>
+      <h1>Welcome To Maze Race</h1>
       <img src="laurels.png" 
       width="400" 
       height="auto"
       alt="Maze" />
-      <div>
-        {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
+        {authState !== AuthState.Unknown && <h1>Ready To Race?!</h1>}
         {authState === AuthState.Authenticated && (
           <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
         )}
@@ -26,7 +25,6 @@ export function Login({userName, authState, onAuthChange}) {
             }}
           />
         )}
-      </div>
     </main>
   );
 }

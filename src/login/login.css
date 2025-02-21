@@ -63,15 +63,46 @@ main {
     flex: 0 30px;
   }
 
-  button {
+  .button {
     background-color: rgb(31, 73, 101);
     color: white;
-    padding: 14px 20px;
+    padding: 5px 10px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
   }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .login-button {
+    background-color: rgb(31, 73, 101);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em;
+    width: 40%;
+    margin: auto;
+
+  }
+
+  .register-button {
+    background-color: rgb(31, 73, 101);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em;
+    width: 40%;
+    margin: auto;
+
+  }
+
+
   
   menu {
     flex: 1;
