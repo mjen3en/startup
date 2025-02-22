@@ -13,6 +13,13 @@
     display: flex;
     justify-content: left;
   }
+
+  .hero{
+    background-color: blue;
+    border-radius: 50%;
+    margin: 0 auto; /* Center the hero */
+    display: flex;
+  }
   
   .maze-cell {
     width: 20px;
