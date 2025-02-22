@@ -1,8 +1,12 @@
 .maze {
     display: grid;
-    grid-template-rows: repeat(10, 20px); /* Adjust rows as needed */
-    grid-template-columns: repeat(10, 20px); /* Adjust columns as needed */
-    border: 1px solid black;
+    grid-template-rows: repeat(20, 20px); /* Adjust rows as needed */
+    grid-template-columns: repeat(20, 20px); /* Adjust columns as needed */
+    align-items: left;
+
+  }
+  .maze-row {
+    align-items: center;
   }
   
   .maze-cell {
