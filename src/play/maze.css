@@ -1,0 +1,19 @@
+.maze {
+    display: grid;
+    grid-template-rows: repeat(10, 20px); /* Adjust rows as needed */
+    grid-template-columns: repeat(10, 20px); /* Adjust columns as needed */
+    border: 1px solid black;
+  }
+  
+  .maze-cell {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .wall {
+    background-color: black;
+  }
+  
+  .path {
+    background-color: white;
+  }

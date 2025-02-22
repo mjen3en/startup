@@ -14,6 +14,29 @@ import { AuthState } from './login/authState';
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
+  const MazeData = [
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+    [1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,1,1,1,0,1],
+    [1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,1,1,1,0,1],
+    [1,0,1,1,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,1],
+    [1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1],
+    [1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1],
+    [1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1],
+    [1,0,1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1],
+    [1,0,1,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1],
+    [1,0,1,0,1,1,1,1,0,1,0,1,1,1,0,1,0,1,0,1],
+    [1,0,1,0,1,0,0,1,0,1,0,0,0,1,0,1,0,1,0,1],
+    [1,0,1,0,1,0,1,1,0,1,1,1,0,1,0,1,0,1,0,1],
+    [1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1],
+    [1,0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+];
+
     return (
         <BrowserRouter>
       <div className="body">
@@ -72,12 +95,12 @@ import { AuthState } from './login/authState';
               } 
                 exact 
                 />
-  <Route path='/play' element={<Play />} />
-  <Route path='/creategame' element={<CreateGame />} />
-  <Route path='/joingame' element={<JoinGame />} />
-   <Route path='/gameover' element={<GameOver />} />
-  <Route path='*' element={<NotFound />} />
-</Routes>
+    <Route path='/play' element={<Play MazeData={ MazeData }/>} />
+    <Route path='/creategame' element={<CreateGame />} />
+    <Route path='/joingame' element={<JoinGame />} />
+    <Route path='/gameover' element={<GameOver />} />
+    <Route path='*' element={<NotFound />} />
+  </Routes>
   
         <footer className="bg-dark text-white-50">
           <div className="container-fluid">
@@ -88,7 +111,7 @@ import { AuthState } from './login/authState';
           </div>
         </footer>
       </div>
-      </BrowserRouter>
+    </BrowserRouter>
     );
 
     function NotFound() {
