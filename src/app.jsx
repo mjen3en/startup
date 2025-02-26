@@ -30,11 +30,6 @@ import { AuthState } from './login/authState';
                   Home
                 </NavLink >
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="play">
-                  Play
-                </NavLink >
-              </li>
               {authState === AuthState.Authenticated && (
                 <li className="nav-item">
                   <NavLink className="nav-link" to="creategame">
@@ -49,11 +44,6 @@ import { AuthState } from './login/authState';
                   </NavLink >
                 </li>
               )}
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="gameover">
-                    Game Over
-                  </NavLink >
-                </li>
               
             </menu>
           </nav>

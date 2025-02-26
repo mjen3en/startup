@@ -109,8 +109,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Screen changes based on logged in / logged out state, implemneted maze functionality (arrow keys move player character, reaching goal transitions player to gameover screen).
+- [x] **Hooks** - useState stores player position in maze, useEffect reacts to arrow key presses and reacts to player finishing the maze
 
 ## 🚀 Service deliverable
 
