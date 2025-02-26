@@ -4,8 +4,8 @@ import './maze.css';
 
 function Maze() {
     const [playerPosition, setPlayerPosition] = React.useState({ x: 1, y: 1 });
-    const goalPosition = {x:1, y:2};
-    let history = useNavigate();
+    const goalPosition = {x:18, y:18};
+    let navigate = useNavigate();
     const mazeData = [
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         [1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
@@ -50,12 +50,10 @@ function Maze() {
             mazeData[newY][newX] !== 1
           ) {
             setPlayerPosition({ x: newX, y: newY });
-            if (playerPosition.x === goalPosition.x && playerPosition.y === goalPosition.y){
-                history.push('/gameover');
             
           }
         }
-    }
+    
 
     useEffect(() => {
         const handleKeyPress = (e) => {
@@ -87,7 +85,13 @@ function Maze() {
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
-  }, [playerPosition, history]);
+  }, [playerPosition]);
+
+useEffect(() => {
+    if (playerPosition.x === goalPosition.x && playerPosition.y === goalPosition.y) {
+        navigate('/gameover');
+    }
+}, [playerPosition, goalPosition, navigate]);
 
 
 
