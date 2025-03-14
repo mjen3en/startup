@@ -2,50 +2,20 @@ import React, { useEffect } from 'react';
 import './gameover.css';
 
 export function GameOver() {
-  const [imageUrl, setImageUrl] = React.useState('Trophy.jpg');
+  const [imageUrl, setImageUrl] = React.useState('');
 
   useEffect(() => {
-    const random = Math.floor(Math.random() * 1000);
-    fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
+    
+    fetch(`https://pixabay.com/api/?key=49331477-a1e82a3dad3b715f88f9a8352&q=trophy&image_type=photo`)
       .then((response) => response.json())
       .then((data) => {
 
-
-        
-        // const apiUrl = `https://picsum.photos/id/${data[0].id}/${width}/${height}?grayscale`;
-        const url = data[0].download_url;
+        const random = Math.floor(Math.random() * 1000) % data.hits.length;
+        const url = data.hits[random].largeImageURL;
         setImageUrl(url);
       })
       .catch();
     }, []);
-
-
-  //   fetch(`https://api.pexels.com/v1/search?query=trophy`, {
-  //     headers: { Authorization: "49331477-a1e82a3dad3b715f88f9a8352" }
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const apiUrl = response.pageUrl;
-  //       setImageUrl(apiUrl);
-  //     })
-  //     .catch();
-  // }, []);
-
-
-  // async function getVictoryImage(){
-  //   try {
-  //   image = await fetch("https://api.pexels.com/v1/search?query=trophy", {
-  //     headers: { Authorization: "49331477-a1e82a3dad3b715f88f9a8352" }
-  //   })
-  //   .then((res) => res.json())
-  //   .then((data) => setImageUrl(data.photos[0].src.original));
-  //   return image;
-  // }
-  // catch (error) {
-  //   console.error("Error fetching image:", error);
-  //   return "Trophy.jpg"; // Fallback image
-  // }
-  // }
 
   return (
     <main>
