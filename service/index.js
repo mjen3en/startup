@@ -12,6 +12,8 @@ const apiRouter = express.Router();
 app.use('/api', apiRouter);
 //mocked database
 let users = [];
+//mocked game database
+let gameCodes = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
@@ -50,6 +52,19 @@ apiRouter.post('/auth/login', async (req, res) => {
     res.status(204).end();
   });
 
+
+  apiRouter.post('/createGame', verifyAuth, async (req, res) => {
+    const code = req.body.code
+    const player = req.body.player;
+    if (!code || !player) {
+      res.status(400).send({ msg: 'Missing code or player' });
+      return;
+    }
+    const game = await createGame(code);
+    res.send({ code: game.code });
+
+  });
+
   async function createUser(email, password) {
     const passwordHash = await bcrypt.hash(password, 10);
   
@@ -62,12 +77,32 @@ apiRouter.post('/auth/login', async (req, res) => {
   
     return user;
   }
+  async function createGame(code, player) {
+    const game = {
+      code: code,
+      players: [player],
+    };
+    gameCodes.push(game);
+    return game;
+  }
+
   
   async function findUser(field, value) {
     if (!value) return null;
   
     return users.find((u) => u[field] === value);
   }
+
+  // Middleware to verify that the user is authorized to call an endpoint
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};
+
   
   // setAuthCookie in the HTTP response
   function setAuthCookie(res, authToken) {
