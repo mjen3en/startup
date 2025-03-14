@@ -4,13 +4,37 @@ import { Button } from 'react-bootstrap';
 
 
 
+
 export function CreateGame() {
+
+
+
+  const [gameCode, setGameCode] = React.useState(localStorage.getItem('gameCode') || '10000');
+
+  useEffect(() => {
+    if (!localStorage.getItem('gameCode')) {
+    const n = generateRandomCode();
+    setGameCode(n);
+    localStorage.setItem('gameCode', n);
+    }
+    },[]);
+
+    function generateRandomCode() {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let code = '';
+      for (let i = 0; i < 6; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        code += characters.charAt(randomIndex);
+      }
+      return code;
+    }
+
+
   return (
     <main>
       <h1>Game Code</h1>
       <div>Randomly generated game code goes here</div>
-      <div> Use 100ms api to generate and manage room codes</div>
-      <div>Game Code: 000000</div>
+      <div>Game Code: {gameCode}</div>
 
       <form method = "get" action = "play">
       <button type="submit"> Play Game</button>
