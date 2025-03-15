@@ -1,12 +1,14 @@
 import React from 'react';
 import './joingame.css';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 export function JoinGame() {
 
   const [gameCode, setGameCode] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
+  const navigate = useNavigate();
   
 
   async function joinGame() {
@@ -22,6 +24,7 @@ export function JoinGame() {
       setDisplayError (`Error: ${body}`);
       
     }
+    navigate('/play' );
   }
   return (
     <main>
