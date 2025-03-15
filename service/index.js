@@ -79,8 +79,8 @@ apiRouter.post('/auth/login', async (req, res) => {
       res.status(400).send({ msg: 'Missing code or player' });
       return;
     }
-    const game = await createGame(gameCode);
-    res.send({ code: game.code });
+    const game = await createGame(gameCode, player);
+    res.send({ code: game.code, players: game.players });
 
   });
 
