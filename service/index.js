@@ -73,20 +73,20 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 
   apiRouter.post('/createGame', verifyAuth, verifyGameCode, async (req, res) => {
-    const code = req.body.code
+    const gameCode = req.body.code
     const player = req.body.player;
-    if (!code || !player) {
+    if (!gameCode || !player) {
       res.status(400).send({ msg: 'Missing code or player' });
       return;
     }
-    const game = await createGame(code);
+    const game = await createGame(gameCode);
     res.send({ code: game.code });
 
   });
 
-  apiRouter.get('/joinGame', verifyAuth, verifyGameCode, async (req, res) => {
-    const gameCode = req.params.gameCode;
-    const player = localStorage.getItem('userName');
+  apiRouter.put('/joinGame', verifyAuth, verifyGameCode, async (req, res) => {
+    const gameCode = req.body.code;
+    const player = req.body.player
     if (!gameCode || !player) {
       res.status(400).send({ msg: 'Missing code or player' });
       return;
@@ -117,14 +117,14 @@ apiRouter.post('/auth/login', async (req, res) => {
       code: code,
       players: [player],
     };
-    game.push(game);
+    games.push(game);
     return game;
   }
 
   async function findGame(field, gameCode) {
     if (!gameCode) return null;
   
-    return gameCodes.find((g) => g[field] === value);
+    return games.find((g) => g[field] === gameCode);
   }
 
   
@@ -135,9 +135,6 @@ apiRouter.post('/auth/login', async (req, res) => {
   }
 
   
-
-
-
   
   // setAuthCookie in the HTTP response
   function setAuthCookie(res, authToken) {

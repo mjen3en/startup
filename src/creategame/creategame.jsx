@@ -1,12 +1,13 @@
 import React, { useEffect} from 'react';
 import './creategame.css';
-import { Button } from 'react-bootstrap';
+import { Button }  from 'react-bootstrap';
 
 
 
 
 export function CreateGame() {
   const [gameCode, setGameCode] = React.useState('10000');
+  const [displayError, setDisplayError] = React.useState(null);
 
   useEffect(() => {
     const n = generateRandomCode();
