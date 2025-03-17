@@ -116,11 +116,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Node.js/Express HTTP service** - 
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - wrote endpoints using express
+- [x] **Static middleware for frontend** - Middleware to verify auth token and verify joingame call request is correct
+- [x] **Calls to third party endpoints** - use thirdparty endpoint to randomly generate trophy image for win screen
 - [x] **Backend service endpoints** - Implemented endpoints for register, login, logout
-- [ ] **Frontend calls service endpoints** - register/login/logout functionality all correctly calls endpoints
+- [x] **Frontend calls service endpoints** - register/login/logout functionality all correctly calls endpoints
 
 ## 🚀 DB/Login deliverable
 
