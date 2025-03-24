@@ -6,16 +6,18 @@ const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 app.use(express.json());
 const authCookieName = 'token';
+const DB = require('./database.js');
 
 app.use(cookieParser());
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 //mocked database
-let users = [];
 //mocked game database
 let games = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
+
+app.use(express.static('public'));
 
 // Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
@@ -66,6 +68,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if (user) {
       delete user.token;
+      DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -108,7 +111,7 @@ apiRouter.post('/auth/login', async (req, res) => {
       password: passwordHash,
       token: uuid.v4(),
     };
-    users.push(user);
+    await DB.addUser(user);
   
     return user;
   }
@@ -131,8 +134,15 @@ apiRouter.post('/auth/login', async (req, res) => {
   async function findUser(field, value) {
     if (!value) return null;
   
-    return users.find((u) => u[field] === value);
+    if (field === 'token') {
+      return DB.getUserByToken(value);
+    }
+    return DB.getUser(value);
   }
+
+  app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+  });
 
   
   
