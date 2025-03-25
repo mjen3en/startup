@@ -33,6 +33,14 @@ For buttons use padding
 
 # REACT Notes
 
+# TODO
+button size
+styling for gamecode
+leaderboard endpoints
+game tab spacing
+
+
+
 
 
 

@@ -29,11 +29,12 @@ export function JoinGame() {
   return (
     <main>
       <h1>Join Game</h1>
-      <div className='input-group mb-3'>
+      <div className='input-group'>
           <input className='form-control' type= 'text' onChange={(e) => setGameCode(e.target.value)} placeholder='6-digit code' />
         </div>
         <Button className = 'Join Button' variant='primary' type='submit' onClick={() => joinGame()} disabled={!gameCode}>
           Join</Button>
+    
       <h1> Recent Matches</h1>
       <div>Database Placeholder, display outcomes of 3 recent matches. ex User1 beat User2</div>
     </main>    
