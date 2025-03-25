@@ -89,10 +89,29 @@ function Maze() {
 
 useEffect(() => {
     if (playerPosition.x === goalPosition.x && playerPosition.y === goalPosition.y) {
+        // put game in database
+        sendGame();
         navigate('/gameover');
     }
 }, [playerPosition, goalPosition, navigate]);
 
+
+async function sendGame() {
+    const response = await fetch('/api/sendGame', {
+      method: 'put',
+      body: JSON.stringify({ winner: localStorage.getItem('userName') }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+        const body = await response.json();
+        setDisplayError(`Game ${body.msg}`);
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
+  }
 
 
 

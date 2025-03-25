@@ -5,7 +5,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('maze');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+const winnerCollection = db.collection('winners');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -34,10 +34,16 @@ async function updateUser(user) {
   await userCollection.updateOne({ email: user.email }, { $set: user });
 }
 
+async function sendGame(winner) {
+  await winnerCollection.updateOne({ username: winner }, { $inc: { win_count: 1 } }, { upsert: true });
+}
+
+
 
 module.exports = {
   getUser,
   getUserByToken,
   addUser,
   updateUser,
+  sendGame
 };

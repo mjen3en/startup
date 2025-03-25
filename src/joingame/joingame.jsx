@@ -24,7 +24,7 @@ export function JoinGame() {
       setDisplayError (`Error: ${body}`);
       
     }
-    navigate('/play' );
+    navigate('/play');
   }
   return (
     <main>

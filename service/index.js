@@ -87,6 +87,16 @@ apiRouter.post('/auth/login', async (req, res) => {
 
   });
 
+  apiRouter.put('/sendGame', verifyAuth, async (req, res) => {
+    const winner = req.body.winner;
+    if (!winner) {
+      res.status(400).send({ msg: 'Missing player' });
+      return;
+    }
+    DB.sendGame(winner);
+    res.send({ msg: 'Game sent' });
+  });
+
   apiRouter.put('/joinGame', verifyAuth, verifyGameCode, async (req, res) => {
     const gameCode = req.body.code;
     const player = req.body.player
