@@ -38,6 +38,11 @@ async function sendGame(winner) {
   await winnerCollection.updateOne({ username: winner }, { $inc: { win_count: 1 } }, { upsert: true });
 }
 
+async function getWinners() {
+  const winners = await winnerCollection.find().toArray();
+  return winners;
+}
+
 
 
 module.exports = {
@@ -45,5 +50,6 @@ module.exports = {
   getUserByToken,
   addUser,
   updateUser,
-  sendGame
+  sendGame,
+  getWinners
 };

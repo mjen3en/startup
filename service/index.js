@@ -55,8 +55,9 @@ apiRouter.post('/auth/login', async (req, res) => {
     if (user) {
       if (await bcrypt.compare(req.body.password, user.password)) {
         user.token = uuid.v4();
+        DB.updateUser(user);
         setAuthCookie(res, user.token);
-        res.send({ email: user.email });
+        res.send({ email: user.email, token: user.token });
         return;
       }
     }
@@ -95,6 +96,16 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
     DB.sendGame(winner);
     res.send({ msg: 'Game sent' });
+  });
+
+  apiRouter.get('/getWinners', verifyAuth, async (req, res) => {
+    const winners = await DB.getWinners();
+    console.log('Winners from DB:', winners);
+    if (!winners) {
+      res.status(404).send({ msg: 'No winners found' });
+      return;
+    }
+    res.send({winners: winners})
   });
 
   apiRouter.put('/joinGame', verifyAuth, verifyGameCode, async (req, res) => {

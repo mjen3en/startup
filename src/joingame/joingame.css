@@ -28,6 +28,7 @@ header {
 
   .input {
     width: 15%;
+
     
   }
   
@@ -54,9 +55,13 @@ header {
     margin: 8px 0;
     border: none;
     cursor: pointer;
+    width: 100%;
+  }
+  .input-group3{
     width: 15%;
   }
-  .input-group{
+  
+  .join-button{
     width: 15%;
   }
   
