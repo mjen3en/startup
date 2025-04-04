@@ -73,6 +73,7 @@ function Maze() {
             };
     
             ws.current.onmessage = (event) => {
+                console.log('Message from WebSocket server:', event.data);
                 const data = JSON.parse(event.data);
 
                 if (data.type === 'connection') {

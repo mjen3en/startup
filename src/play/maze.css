@@ -20,6 +20,13 @@
     margin: 0 auto; /* Center the hero */
     display: flex;
   }
+
+  .opponent {
+    background-color: red;
+    border-radius: 50%;
+    margin: 0 auto; /* Center the opponent */
+    display: flex;
+  }
   
   .maze-cell {
     width: 20px;
