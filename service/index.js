@@ -7,6 +7,7 @@ const uuid = require('uuid');
 app.use(express.json());
 const authCookieName = 'token';
 const DB = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
 
 app.use(cookieParser());
 const apiRouter = express.Router();
@@ -177,6 +178,8 @@ apiRouter.post('/auth/login', async (req, res) => {
   }
 
   
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
+
+  peerProxy(httpService);
