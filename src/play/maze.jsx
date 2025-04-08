@@ -1,13 +1,16 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { Route, useNavigate } from "react-router-dom";
 import './maze.css';
+import { WebSocketContext } from '../WebSocketContext.jsx';
 
-function Maze({web}) {
+function Maze( { gameCode }) {
     const [playerPosition, setPlayerPosition] = React.useState({ x: 1, y: 1 });
     const [opponentPosition, setOpponentPosition] = React.useState({ x: 1, y: 1 });
+    const [displayError, setDisplayError] = React.useState(null);
     const goalPosition = {x:18, y:18};
-    const ws = web; // Use useRef to keep the WebSocket instance
+    const ws = useContext(WebSocketContext);
     let navigate = useNavigate();
+    const code = gameCode;
     const mazeData = [
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         [1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
@@ -50,15 +53,17 @@ function Maze({web}) {
             const newPosition = { x: newX, y: newY };
             setPlayerPosition(newPosition);
 
-            if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            if (ws && ws.readyState === WebSocket.OPEN) {
                 console.log('Sending move to WebSocket:', newPosition);
-                ws.current.send(JSON.stringify({
+                ws.send(JSON.stringify({
                     type: 'move',
-                    position: newPosition
+                    roomCode: code,
+                    position: newPosition,
+                    
                 }));
             } else {
                 console.error('WebSocket is not ready to send messages');
-                console.log('WebSocket state:', ws.current ? ws.current.readyState : 'WebSocket not initialized');
+                console.log('WebSocket state:', ws ? ws.readyState : 'WebSocket not initialized');
             }
             
           }
@@ -72,25 +77,17 @@ function Maze({web}) {
             //     console.log('Connected to WebSocket server');
             // };
     
-            ws.current.onmessage = (event) => {
+            ws.onmessage = (event) => {
                 console.log('Message from WebSocket server:', event.data);
                 const data = JSON.parse(event.data);
 
-                if (data.type === 'connection') {
-                    console.log(data.message); // Logs: "Welcome to the WebSocket server!"
-                }
-                 else if (data.type === 'move') {
+                
+                 if (data.type === 'move') {
                     setOpponentPosition(data.position); // Update opponent's position
                 }
             };
     
-            ws.current.onclose = () => {
-                console.log('Disconnected from WebSocket server');
-            };
-    
-            return () => {
-                ws.current.close();
-            };
+            
         }, []);
 
     
@@ -138,7 +135,7 @@ useEffect(() => {
 useEffect(() => {
     if (opponentPosition.x === goalPosition.x && opponentPosition.y === goalPosition.y) {
         // navigate to loose screen if opponent reaches goal first
-        navigate('/gameover');
+        navigate('/lose');
     }
 }, [opponentPosition, goalPosition, navigate]);
 

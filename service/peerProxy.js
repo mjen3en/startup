@@ -41,7 +41,6 @@ function peerProxy(httpServer) {
             });
           }
         } else if (parsedData.type === 'move') {
-
           const roomCode = parsedData.roomCode;
           if (rooms[roomCode]) {
             rooms[roomCode].players.forEach((player) => {

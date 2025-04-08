@@ -9,6 +9,7 @@ import { CreateGame } from './creategame/creategame';
 import { JoinGame } from './joingame/joingame';
 import { AuthState } from './login/authState';
 import { WebSocketProvider } from './WebSocketContext.jsx';
+import { LoseScreen } from './gameover/losescreen.jsx';
 
  function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -18,8 +19,8 @@ import { WebSocketProvider } from './WebSocketContext.jsx';
   
 
     return (
+      <WebSocketProvider>
         <BrowserRouter>
-        <WebSocketProvider>
       <div className="body">
         <header className="container-fluid">
           <nav className="navbar fixed-top navbar-dark">
@@ -70,6 +71,7 @@ import { WebSocketProvider } from './WebSocketContext.jsx';
     <Route path='/creategame' element={<CreateGame />} />
     <Route path='/joingame' element={<JoinGame />} />
     <Route path='/gameover' element={<GameOver />} />
+    <Route path= '/lose' element={<LoseScreen />} />
     <Route path='*' element={<NotFound />} />
   </Routes>
   
@@ -82,8 +84,8 @@ import { WebSocketProvider } from './WebSocketContext.jsx';
           </div>
         </footer>
       </div>
-      </WebSocketProvider>
-    </BrowserRouter>     
+    </BrowserRouter>  
+</WebSocketProvider>   
       
     );
 

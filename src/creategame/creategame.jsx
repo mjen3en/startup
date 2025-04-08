@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useRef} from 'react';
 import './creategame.css';
 import { Button }  from 'react-bootstrap';
-import { WebSocketContext } from '../WebSocketContext.jsx';
+import { useNavigate } from 'react-router-dom';
+import { WebSocketContext, WebSocketProvider } from '../WebSocketContext.jsx';
 
 
 
@@ -10,6 +11,7 @@ export function CreateGame() {
   const [gameCode, setGameCode] = React.useState('10000');
   const [displayError, setDisplayError] = React.useState(null);
   const ws = useContext(WebSocketContext); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const n = generateRandomCode();
@@ -57,7 +59,7 @@ export function CreateGame() {
         } else if (data.type === 'start') {
           console.log('Game started for player:', data.playerNumber);
           // navigate to the game screen
-          navigate('/play');
+          navigate('/play', {state: {gameCode}});
         }
       }
 

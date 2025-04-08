@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useContext } from 'react';
 import './joingame.css';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-import { WebSocketContext } from '../WebSocketContext.jsx';
+import { WebSocketContext, WebSocketProvider } from '../WebSocketContext.jsx';
 
 
 export function JoinGame() {
@@ -67,7 +67,7 @@ export function JoinGame() {
       if (data.type === 'joined') {
         console.log('Joined room:', data.message);
       } else if (data.type === 'start') {
-        navigate('/play'); // Pass the WebSocket instance to the play component
+        navigate('/play', {state: {gameCode}}); // Pass the WebSocket instance to the play component
       }
       else if (data.type === 'error') {
         console.error('Error:', data.message);
@@ -96,6 +96,6 @@ export function JoinGame() {
           <p>No winners yet</p>
         )}
       </div>
-    </main>    
+    </main>   
   );
 }
