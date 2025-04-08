@@ -8,6 +8,7 @@ import { GameOver } from './gameover/gameover';
 import { CreateGame } from './creategame/creategame';
 import { JoinGame } from './joingame/joingame';
 import { AuthState } from './login/authState';
+import { WebSocketProvider } from './WebSocketContext.jsx';
 
  function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -18,6 +19,7 @@ import { AuthState } from './login/authState';
 
     return (
         <BrowserRouter>
+        <WebSocketProvider>
       <div className="body">
         <header className="container-fluid">
           <nav className="navbar fixed-top navbar-dark">
@@ -80,7 +82,9 @@ import { AuthState } from './login/authState';
           </div>
         </footer>
       </div>
-    </BrowserRouter>
+      </WebSocketProvider>
+    </BrowserRouter>     
+      
     );
 
     function NotFound() {

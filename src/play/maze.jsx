@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from "react";
 import { Route, useNavigate } from "react-router-dom";
 import './maze.css';
 
-function Maze() {
+function Maze({web}) {
     const [playerPosition, setPlayerPosition] = React.useState({ x: 1, y: 1 });
     const [opponentPosition, setOpponentPosition] = React.useState({ x: 1, y: 1 });
     const goalPosition = {x:18, y:18};
-    const ws = useRef(null); // Use useRef to keep the WebSocket instance
+    const ws = web; // Use useRef to keep the WebSocket instance
     let navigate = useNavigate();
     const mazeData = [
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -66,11 +66,11 @@ function Maze() {
 
         useEffect(() => {
             // Connect to the WebSocket server
-            ws.current = new WebSocket('ws://localhost:3000');
+            // ws.current = new WebSocket('ws://localhost:3000');
     
-            ws.current.onopen = () => {
-                console.log('Connected to WebSocket server');
-            };
+            // ws.current.onopen = () => {
+            //     console.log('Connected to WebSocket server');
+            // };
     
             ws.current.onmessage = (event) => {
                 console.log('Message from WebSocket server:', event.data);
@@ -79,10 +79,7 @@ function Maze() {
                 if (data.type === 'connection') {
                     console.log(data.message); // Logs: "Welcome to the WebSocket server!"
                 }
-    
-                if (data.type === 'start') {
-                    setPlayerNumber(data.playerNumber); // Assign player number
-                } else if (data.type === 'move') {
+                 else if (data.type === 'move') {
                     setOpponentPosition(data.position); // Update opponent's position
                 }
             };
@@ -95,6 +92,7 @@ function Maze() {
                 ws.current.close();
             };
         }, []);
+
     
 
     useEffect(() => {

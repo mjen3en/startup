@@ -1,4 +1,5 @@
 const { WebSocketServer } = require('ws');
+let rooms = {};
 
 function peerProxy(httpServer) {
   console.log('Starting peer proxy...');
@@ -26,12 +27,30 @@ function peerProxy(httpServer) {
       try {
         const parsedData = JSON.parse(data);
         console.log('Received message from client:', parsedData);
-      
-      socketServer.clients.forEach((client) => {
-        if (client !== socket && client.readyState === WebSocket.OPEN) {
-          client.send(JSON.stringify(parsedData));
+        if (parsedData.type === 'join') {
+          // player can join a room that has already been created
+          const roomCode = parsedData.roomCode;
+          if (!rooms[roomCode]) {
+            rooms[roomCode] = { players: [] };
+          }
+          rooms[roomCode].players.push(socket);
+          socket.send(JSON.stringify({ type: 'joined', message: `Joined room ${roomCode}` }));
+          if (rooms[roomCode].players.length == 2) {
+            rooms[roomCode].players.forEach((player, index) => {
+              player.send(JSON.stringify({ type: 'start', playerNumber: index + 1 }));
+            });
+          }
+        } else if (parsedData.type === 'move') {
+
+          const roomCode = parsedData.roomCode;
+          if (rooms[roomCode]) {
+            rooms[roomCode].players.forEach((player) => {
+              if (player !== socket && player.readyState === WebSocket.OPEN) {
+                player.send(JSON.stringify(parsedData));
+              }
+            });
+          }
         }
-      });
     } catch (error) { 
         console.error('Error parsing message:', error);
         socket.send(JSON.stringify({ type: 'error', message: 'Invalid message format' }));
