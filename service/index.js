@@ -4,21 +4,24 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
-app.use(express.json());
+
 const authCookieName = 'token';
 const DB = require('./database.js');
-const { peerProxy } = require('./peerProxy.js');
+const websocket = require('./peerProxy.js');
 
 app.use(cookieParser());
+app.use(express.json());
+app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
+
 //mocked database
 //mocked game database
 let games = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
-app.use(express.static('public'));
+
 
 // Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
@@ -162,9 +165,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     return DB.getUser(value);
   }
 
-  app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
-  });
+  
 
   
   
@@ -177,9 +178,13 @@ apiRouter.post('/auth/login', async (req, res) => {
     });
   }
 
+  app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+  });
+
   
 const httpService = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
 
-  peerProxy(httpService);
+ websocket.peerProxy(httpService);

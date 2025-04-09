@@ -12,15 +12,15 @@ import { WebSocketProvider } from './WebSocketContext.jsx';
 import { LoseScreen } from './gameover/losescreen.jsx';
 
  function App() {
-  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const [userName, setUserName] = React.useState('');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
   
 
     return (
-      <WebSocketProvider>
         <BrowserRouter>
+        <WebSocketProvider>
       <div className="body">
         <header className="container-fluid">
           <nav className="navbar fixed-top navbar-dark">
@@ -84,8 +84,9 @@ import { LoseScreen } from './gameover/losescreen.jsx';
           </div>
         </footer>
       </div>
+      </WebSocketProvider> 
     </BrowserRouter>  
-</WebSocketProvider>   
+  
       
     );
 

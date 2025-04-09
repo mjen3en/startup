@@ -89,14 +89,6 @@ export function CreateGame() {
       <h1>Game Code</h1>
       <div>Game Code: {gameCode}</div>
 
-      <form method = "get" action = "play">
-        <div>
-          <Button variant="primary" type="submit" >Start Game</Button>
-        </div>
-      </form>
-      
-      <h1> Websocket Data</h1>
-      <div>Will automatically notify player and change screens when another player has joined the game</div>
     </main>
   );
 }

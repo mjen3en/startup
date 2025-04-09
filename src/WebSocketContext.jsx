@@ -1,6 +1,5 @@
 import React, { createContext, useRef, useContext, useEffect, useState } from 'react';
-import { JoinGame } from './joingame/joingame';
-import { CreateGame } from './creategame/creategame';
+
 
 export const WebSocketContext = createContext(null);
 
@@ -8,7 +7,13 @@ export const WebSocketProvider = ({ children }) => {
     const ws = useRef(null);
 
     useEffect(() => {
-        ws.current = new WebSocket('ws://localhost:3000');
+
+        // let port = window.location.port;
+        // const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        // ws.current = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+
+        ws.current = new WebSocket('wss://startup.mjweb260.click');
+        // ws.current = new WebSocket('ws://localhost:3000');
         ws.current.onopen = () => {
             console.log('WebSocket connection established');
         };

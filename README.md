@@ -136,8 +136,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - PeerProxy listens for websocket connection
+- [x] **Frontend makes WebSocket connection** - WebSocket Context allows for ws connections on frontend
+- [x] **Data sent over WebSocket connection** - sends moves and start game message over ws
+- [x] **WebSocket data displayed** - Maze displayes moves sent over ws
+- [x] **Application is fully functional** - Fully Functional!

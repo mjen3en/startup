@@ -15,9 +15,6 @@ export function Play() {
       <div>
         <Maze gameCode = {gameCode}/>
       </div>
-      <div> Websocket placeholder</div>
-      <div>Upon one player completing the maze, Websocket will automatically transition both players to game over screen</div>
-      <li><a href="gameover">GameOver</a></li>
     </main>
 
   );
